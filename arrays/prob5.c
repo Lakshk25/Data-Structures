@@ -8,38 +8,40 @@ element - 2 : 1
 Expected Output :
 Total number of duplicate elements found in the array is : 1
 */
-
 #include <stdio.h>
-int checkDuplicate(int *arr, int size)
+void checkTotalDuplicate(int arr[], int size)
 {
-    int count=0;
+    int res[size];
+    int count = 1;
+    int result = 0;
+    // assign value to zero
     for (int i = 0; i < size; i++)
     {
+        res[i] = 0;
+    }
+    // code for check number
+    for (int i = 0; i < size; i++)
+    {
+        count = 1;
         for (int j = i + 1; j < size; j++)
         {
             if (arr[i] == arr[j])
             {
-                count = 1;
+                count++;
+                res[j] = -1;
             }
         }
+        if (count > 1 && res[i] != -1)
+        {
+            result++;
+        }
     }
-    if(count==0){
-        return 0;
-    }
-    else{
-        return 1;
-    }
+    printf("Total number of duplicate elements found in the array is : %d", result);
 }
 int main()
 {
-    int arr[] = {2, 5, 21, 1,1, 7};
-    int size = 5;
-    int check = checkDuplicate(arr , size);
-    if(check==0){
-        printf("all are unique\n");
-    }
-    else{
-        printf("duplicate found\n");
-    }
+    int arr[] = {5, 5, 2, 5, 2, 1, 1};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    checkTotalDuplicate(arr, size);
     return 0;
 }
