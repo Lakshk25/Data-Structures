@@ -31,7 +31,7 @@ void checkTotalDuplicate(int arr[], int size)
                 res[j] = -1;
             }
         }
-        if (count > 1 && res[i] != -1)
+        if (count > 1 && res[i] != -1) // change count value for diffrent answers
         {
             result++;
         }
